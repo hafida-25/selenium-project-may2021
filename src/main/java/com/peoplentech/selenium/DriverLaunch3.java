@@ -1,17 +1,19 @@
 package com.peoplentech.selenium;
 
 import com.sun.xml.internal.ws.util.xml.CDATA;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import org.testng.IDataProviderInterceptor;
 import org.testng.annotations.IDataProviderAnnotation;
 import org.testng.annotations.Test;
 
 public class DriverLaunch3 {
     private static WebDriver driver;
-
+    private static Logger  logger= Logger.getLogger(DriverLaunch3.class);
    // public static void setupBrowserForamazon() {
      //   System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
        //  driver = new ChromeDriver();
@@ -91,9 +93,27 @@ public class DriverLaunch3 {
        closeBrowser();
         }
 
-
+     @Test
     public void validateUserCanSearchForItemsInEbay() throws InterruptedException {
         setupBrowser("firefox","https://www.ebay.com");
+        System.out.println("browser opened and ebay.com lanched");
+
+      String actualUrl =  driver.getCurrentUrl();
+      String expectedUrl = "https://www.ebay.com";
+
+      // System.out.println(actualUrl);
+       // System.out.println(expectedUrl);
+
+     /* if(actualUrl.equalsIgnoreCase(expectedUrl)) {
+          System.out.println("url matched");
+      }else {
+          System.out.println("url didn't match");
+
+      }*/
+
+      Assert.assertEquals(actualUrl,expectedUrl,"url didn't match");
+      System.out.println("ebay homepage url validated");
+
         waitFor(2);
         typeOnXpath("//input[@id='gh-ac']","java books");
         clickOnId("gh-btn");

@@ -2,6 +2,7 @@ package com.peoplentech.selenium;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.sun.org.glassfish.gmbal.Description;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,6 +11,7 @@ import org.testng.annotations.Test;
 
 public class DriverLaunch2 {
     private static WebDriver driver;
+    private static Logger logger= Logger.getLogger(DriverLaunch2.class);
 
    // public static void setupBrowserForamazon() {
      //   System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");

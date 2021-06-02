@@ -20,6 +20,7 @@ public class DriverLunch1 {
         //open the browser
         driver.get("https://www.google.com");
 
+        //type of selenium browser
         driver.findElement(By.xpath("//input[@class='gLFyf gsfi']")).sendKeys("Selenium Books");
 
         //wait
